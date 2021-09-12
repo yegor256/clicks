@@ -20,54 +20,12 @@
 % OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 % SOFTWARE.
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{clicks}[00.00.0000 0.0.0 Clicks]
-
-\RequirePackage{etoolbox}
-
-\makeatletter\newif\ifclicks@static\makeatother
-\makeatletter\DeclareOption{static}{\clicks@statictrue}\makeatother
-\ProcessOptions\relax
-
-\makeatletter\newcommand*\clicks@body{}\makeatother
-\makeatletter\newcommand\clicks@flush{%
-  \clicks@body\vspace*{0pt}\newpage%
-}\makeatother
-
-\newcounter{minutes}
-
-% Print the content as is
-\newcommand\print[1]{%
-  \makeatletter\gappto\clicks@body\makeatother{{#1\par}}%
-}
-
-\makeatletter\newcommand\flush[1][1]{%
-  \clicks@flush%
-  \renewcommand*\clicks@body{}%
-  \ifclicks@static\else%
-    \addtocounter{minutes}{#1}%
-  \fi%
-}
-
-\makeatletter\newcommand\click{%
-  \ifclicks@static\else%
-    \clicks@flush%
-  \fi%
-}\makeatother
-
-% Print and flush
-% [1]: How many minutes to stay here
-% {1}: The content to print
-\newcommand\plush[2][1]{%
-  \print{#2}%
-  \flush[#1]%
-}
-
-% Print and click
-% {1}: The content to print
-\newcommand\plick[1]{%
-  \print{#1}%
-  \click%
-}
-
-\endinput
+\documentclass[12pt]{article}
+\usepackage{clicks}
+\begin{document}
+\plick{Here is your wedding plan:}
+\plick{1. Buy a ring}
+\plick{2. Propose}
+\plush{3. Get married}
+And then live happily ever after.
+\end{document}

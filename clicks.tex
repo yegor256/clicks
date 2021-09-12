@@ -1,0 +1,84 @@
+% (The MIT License)
+%
+% Copyright (c) 2021 Yegor Bugayenko
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the 'Software'), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[tt=false,type1=true]{libertine}
+\usepackage{clicks}
+\usepackage{ffcode}
+
+\title{\ff{clicks}: \LaTeX{} Package \\ for Slide Deck Animation}
+\author{Yegor Bugayenko}
+\date{0.0.0 00.00.0000}
+
+\begin{document}
+\pagenumbering{gobble}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{32pt}
+\setlength{\parskip}{6pt}
+
+\maketitle
+
+\section[Intro]{Introduction}
+
+This package helps simulate animation in PDF documents. You put
+some content on the page, then you ``click'' and the pages ends,
+while the content gets copied to the next page. There, you add new
+content. In the full-screen presentation mode this will look
+like animation, similar to what you can get with MS PowerPoint.
+
+\begin{ffcode}
+\documentclass{article}
+\usepackage{clicks}
+\begin{document}
+\print{Here is your wedding plan:}\click
+\print{1. Buy a ring}\click
+\print{2. Propose}\click
+\print{3. Get married}\flush
+\end{document}
+\end{ffcode}
+
+You can make it shorter, with the help of
+\ff{\char`\\plick\{\}} and \ff{\char`\\plush\{\}} commands:
+
+\begin{ffcode}
+\documentclass{article}
+\usepackage{clicks}
+\begin{document}
+\plick{Here is your wedding plan:}
+\plick{1. Buy a ring}
+\plick{2. Propose}
+\plush{3. Get married}
+\end{document}
+\end{ffcode}
+
+If you need to render the document without animation, just
+use the \ff{static} package option.
+
+More details about this package you can find
+in the \ff{yegor256/clicks} GitHub repository.
+
+If you want to add a feature or fix a bug, you are welcome
+to submit an issue or make a pull request.
+
+\end{document}

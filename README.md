@@ -1,18 +1,18 @@
-[![make](https://github.com/yegor256/crumbs/actions/workflows/latexmk.yml/badge.svg)](https://github.com/yegor256/crumbs/actions/workflows/latexmk.yml)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/crumbs/blob/master/LICENSE.txt)
+[![make](https://github.com/yegor256/clicks/actions/workflows/latexmk.yml/badge.svg)](https://github.com/yegor256/clicks/actions/workflows/latexmk.yml)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/clicks/blob/master/LICENSE.txt)
 
-This LaTeX package adds nagivation crumbs to your document, which
+This LaTeX package adds nagivation clicks to your document, which
 may be very useful for presentation and slide decks.
 
 First, [install it](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages)
-from [CTAN](https://ctan.org/pkg/crumbs) 
+from [CTAN](https://ctan.org/pkg/clicks) 
 and then use in the preamble:
 
 ```tex
 \documentclass{article}
-\usepackage{crumbs}
+\usepackage{clicks}
 \usepackage{fancyhdr}
-\fancyhead[L]{\crumbs}
+\fancyhead[L]{\clicks}
 \begin{document}
 \section{Introduction}
 Some text here.
@@ -22,7 +22,7 @@ Some other text here.
 ```
 
 The full example and all commands are available in the 
-[`crumbs.tex`](https://github.com/yegor256/crumbs/blob/master/crumbs.tex) file.
+[`clicks.tex`](https://github.com/yegor256/clicks/blob/master/clicks.tex) file.
 
 If you want to contribute yourself, make a fork, then create a branch, 
 then run `make` in the root directory.

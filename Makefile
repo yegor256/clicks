@@ -24,38 +24,41 @@
 
 .ONESHELL:
 
-all: crumbs.pdf zip
+all: clicks.pdf test zip
 
-crumbs.pdf: crumbs.tex crumbs.sty
+test:
+	pdflatex test.tex
+
+clicks.pdf: clicks.tex clicks.sty
 	latexmk -pdf $<
 	texsc $<
 	texqc --ignore 'You have requested document class' $<
 
-zip: crumbs.pdf crumbs.sty
+zip: clicks.pdf clicks.sty
 	rm -rf package
 	mkdir package
 	cd package
-	mkdir crumbs
-	cd crumbs
+	mkdir clicks
+	cd clicks
 	cp ../../README.md .
 	version=$$(cat ../../VERSION.txt)
 	echo "Version is: $${version}"
 	date=$$(date +%Y/%m/%d)
 	echo "Date is: $${date}"
-	cp ../../crumbs.sty .
-	gsed -i "s|0\.0\.0|$${version}|" crumbs.sty
-	gsed -i "s|00\.00\.0000|$${date}|" crumbs.sty
-	cp ../../crumbs.tex .
-	gsed -i "s|0\.0\.0|$${version}|" crumbs.tex
-	gsed -i "s|00\.00\.0000|$${date}|" crumbs.tex
+	cp ../../clicks.sty .
+	gsed -i "s|0\.0\.0|$${version}|" clicks.sty
+	gsed -i "s|00\.00\.0000|$${date}|" clicks.sty
+	cp ../../clicks.tex .
+	gsed -i "s|0\.0\.0|$${version}|" clicks.tex
+	gsed -i "s|00\.00\.0000|$${date}|" clicks.tex
 	cp ../../.latexmkrc .
-	latexmk -pdf crumbs.tex
+	latexmk -pdf clicks.tex
 	rm .latexmkrc
-	rm -rf _minted-* *.crumbs *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.log *.run.xml *.out *.exc
-	cat crumbs.sty | grep RequirePackage | gsed -e "s/.*{\(.\+\)}.*/hard \1/" > DEPENDS.txt
+	rm -rf _minted-* *.clicks *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.log *.run.xml *.out *.exc
+	cat clicks.sty | grep RequirePackage | gsed -e "s/.*{\(.\+\)}.*/hard \1/" > DEPENDS.txt
 	cd ..
-	zip -r crumbs.zip *
-	cp crumbs.zip ..
+	zip -r clicks.zip *
+	cp clicks.zip ../clicks-$${version}.zip
 	cd ..
 
 clean:
