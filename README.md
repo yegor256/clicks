@@ -1,8 +1,7 @@
 [![make](https://github.com/yegor256/clicks/actions/workflows/latexmk.yml/badge.svg)](https://github.com/yegor256/clicks/actions/workflows/latexmk.yml)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/clicks/blob/master/LICENSE.txt)
 
-This LaTeX package adds nagivation clicks to your document, which
-may be very useful for presentation and slide decks.
+This LaTeX package simulates animiation in slide deck, similar to what PowerPoint can do.
 
 First, [install it](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages)
 from [CTAN](https://ctan.org/pkg/clicks) 
@@ -11,13 +10,12 @@ and then use in the preamble:
 ```tex
 \documentclass{article}
 \usepackage{clicks}
-\usepackage{fancyhdr}
-\fancyhead[L]{\clicks}
 \begin{document}
-\section{Introduction}
-Some text here.
-\section{Related Works}
-Some other text here.
+\plick{Here is your wedding plan:}
+\plick{1. Buy a ring}
+\plick{2. Propose}
+\plush{3. Get married}
+And then live happily ever after.
 \end{document}
 ```
 
