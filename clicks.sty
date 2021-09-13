@@ -23,6 +23,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{clicks}[00.00.0000 0.0.0 Clicks]
 
+\RequirePackage{xkeyval}
 \RequirePackage{etoolbox}
 
 \makeatletter\newif\ifclicks@static\makeatother
@@ -37,9 +38,9 @@
 \newcounter{minutes}
 
 % Print the content as is
-\newcommand\print[1]{%
-  \makeatletter\gappto\clicks@body\makeatother{{#1\par}}%
-}
+\makeatletter\newcommand\print[1]{%
+  \gappto\clicks@body{{#1\par}}%
+}\makeatother
 
 \makeatletter\newcommand\flush[1][1]{%
   \clicks@flush%
