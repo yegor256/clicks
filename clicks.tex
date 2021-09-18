@@ -65,15 +65,23 @@ You can make it shorter, with the help of
 \documentclass{article}
 \usepackage{clicks}
 \begin{document}
-\plick{Here is your wedding plan:}
-\plick{1. Buy a ring}
-\plick{2. Propose}
-\plush{3. Get married}
+\plick[2]{Here is your wedding plan:}
+\plick[3]{1. Buy a ring}
+\plick[5]{2. Propose}
+\plush[1]{3. Get married}
 \end{document}
 \end{ffcode}
 
 If you need to render the document without animation, just
 use the \ff{static} package option.
+
+The optional parameters at \ff{\char`\\plick\{\}} and \ff{\char`\\plush\{\}}
+are the minutes: how much you are planning to stay at this animation.
+The minutes are accumulated in the \ff{minutes} counter, which
+you can show, for example, at your header. This will help you track
+time during the presentation. The commands
+\ff{\char`\\click\{\}} and \ff{\char`\\flush\{\}} also have the
+same optional arguments.
 
 More details about this package you can find
 in the \ff{yegor256/clicks} GitHub repository.

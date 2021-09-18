@@ -50,7 +50,10 @@
   \fi%
 }
 
-\makeatletter\newcommand\click{%
+\makeatletter\newcommand\click[1][1]{%
+  \ifclicks@static\else%
+    \addtocounter{minutes}{#1}%
+  \fi%
   \ifclicks@static\else%
     \clicks@flush%
   \fi%
@@ -65,10 +68,11 @@
 }
 
 % Print and click
+% [1]: How many minutes to stay here
 % {1}: The content to print
-\newcommand\plick[1]{%
-  \print{#1}%
-  \click%
+\newcommand\plick[2][1]{%
+  \print{#2}%
+  \click[#1]%
 }
 
 \endinput
