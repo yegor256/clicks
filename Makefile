@@ -43,7 +43,7 @@ zip: clicks.pdf clicks.sty
 	mkdir clicks
 	cd clicks
 	cp ../../README.md .
-	version=$$(cat ../../VERSION.txt)
+	version=$$(curl --silent -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/yegor256/clicks/releases/latest | jq -r '.tag_name')
 	echo "Version is: $${version}"
 	date=$$(date +%Y/%m/%d)
 	echo "Date is: $${date}"
