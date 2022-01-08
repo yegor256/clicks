@@ -23,45 +23,48 @@
 .SHELLFLAGS = -e -x -c
 .ONESHELL:
 
-all: clicks.pdf test copyright zip
+NAME=clicks
+
+all: $(NAME).pdf test copyright zip
 
 copyright:
-	grep -q -r "2021-$$(date +%Y)" --include '*.tex' --include '*.sty' --include 'Makefile' .
+	find . -name '*.tex' -o -name '*.sty' -o -name 'Makefile' | xargs -n1 grep -r "(c) 2021-$$(date +%Y) "
 
-test:
-	pdflatex test.tex
+test: tests/*.tex $(NAME).sty
+	cd tests && make && cd ..
 
-clicks.pdf: clicks.tex clicks.sty
+$(NAME).pdf: $(NAME).tex $(NAME).sty
 	latexmk -pdf $<
 	texsc $<
 	texqc --ignore 'You have requested document class' $<
 
-zip: clicks.pdf clicks.sty
+zip: $(NAME).pdf $(NAME).sty
 	rm -rf package
 	mkdir package
 	cd package
-	mkdir clicks
-	cd clicks
+	mkdir $(NAME)
+	cd $(NAME)
 	cp ../../README.md .
-	version=$$(curl --silent -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/yegor256/clicks/releases/latest | jq -r '.tag_name')
+	version=$$(curl --silent -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/yegor256/$(NAME)/releases/latest | jq -r '.tag_name')
 	echo "Version is: $${version}"
 	date=$$(date +%Y/%m/%d)
 	echo "Date is: $${date}"
-	cp ../../clicks.sty .
-	gsed -i "s|0\.0\.0|$${version}|" clicks.sty
-	gsed -i "s|00\.00\.0000|$${date}|" clicks.sty
-	cp ../../clicks.tex .
-	gsed -i "s|0\.0\.0|$${version}|" clicks.tex
-	gsed -i "s|00\.00\.0000|$${date}|" clicks.tex
+	cp ../../$(NAME).sty .
+	gsed -i "s|0\.0\.0|$${version}|" $(NAME).sty
+	gsed -i "s|00\.00\.0000|$${date}|" $(NAME).sty
+	cp ../../$(NAME).tex .
+	gsed -i "s|0\.0\.0|$${version}|" $(NAME).tex
+	gsed -i "s|00\.00\.0000|$${date}|" $(NAME).tex
 	cp ../../.latexmkrc .
-	latexmk -pdf clicks.tex
+	latexmk -pdf $(NAME).tex
 	rm .latexmkrc
-	rm -rf _minted-* *.clicks *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.log *.run.xml *.out *.exc
-	cat clicks.sty | grep RequirePackage | gsed -e "s/.*{\(.\+\)}.*/hard \1/" > DEPENDS.txt
+	rm -rf _minted-* *.$(NAME) *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.log *.run.xml *.out *.exc
+	cat $(NAME).sty | grep RequirePackage | gsed -e "s/.*{\(.\+\)}.*/hard \1/" > DEPENDS.txt
 	cd ..
-	zip -r clicks.zip *
-	cp clicks.zip ../clicks-$${version}.zip
+	zip -r $(NAME).zip *
+	cp $(NAME).zip ../$(NAME)-$${version}.zip
 	cd ..
 
 clean:
 	git clean -dfX
+	cd tests && make clean && cd ..
