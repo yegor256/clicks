@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-.SHELLFLAGS = -e -x -c
+.SHELLFLAGS = -e -x -c -o pipefail
 .ONESHELL:
 
 NAME=clicks
@@ -38,6 +38,13 @@ $(NAME).pdf: $(NAME).tex $(NAME).sty
 	texsc $<
 	texqc --ignore 'You have requested document class' $<
 
+set-version:
+	date=$$(date +%Y/%m/%d)
+	sed -i "s|0\.0\.0|$(version)|" $(NAME).sty
+	sed -i "s|00\.00\.0000|$${date}|" $(NAME).sty
+	sed -i "s|0\.0\.0|$(version)|" $(NAME).tex
+	sed -i "s|00\.00\.0000|$${date}|" $(NAME).tex
+
 zip: $(NAME).pdf $(NAME).sty
 	rm -rf package
 	mkdir package
@@ -45,24 +52,17 @@ zip: $(NAME).pdf $(NAME).sty
 	mkdir $(NAME)
 	cd $(NAME)
 	cp ../../README.md .
-	version=$$(curl --silent -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/yegor256/$(NAME)/releases/latest | jq -r '.tag_name')
-	echo "Version is: $${version}"
-	date=$$(date +%Y/%m/%d)
-	echo "Date is: $${date}"
 	cp ../../$(NAME).sty .
-	gsed -i "s|0\.0\.0|$${version}|" $(NAME).sty
-	gsed -i "s|00\.00\.0000|$${date}|" $(NAME).sty
 	cp ../../$(NAME).tex .
-	gsed -i "s|0\.0\.0|$${version}|" $(NAME).tex
-	gsed -i "s|00\.00\.0000|$${date}|" $(NAME).tex
 	cp ../../.latexmkrc .
 	latexmk -pdf $(NAME).tex
 	rm .latexmkrc
 	rm -rf _minted-* *.$(NAME) *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.log *.run.xml *.out *.exc
-	cat $(NAME).sty | grep RequirePackage | gsed -e "s/.*{\(.\+\)}.*/hard \1/" > DEPENDS.txt
+	cat $(NAME).sty | grep RequirePackage | sed -e "s/.*{\(.\+\)}.*/hard \1/" | uniq > DEPENDS.txt
 	cd ..
 	zip -r $(NAME).zip *
-	cp $(NAME).zip ../$(NAME)-$${version}.zip
+	cp $(NAME).zip ..
+	unzip -l $(NAME).zip
 	cd ..
 
 clean:

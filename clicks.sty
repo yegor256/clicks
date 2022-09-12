@@ -37,19 +37,23 @@
 
 \newcounter{minutes}
 
-% Print the content as is
+% Print the content as is.
 \makeatletter\newcommand\print[1]{%
   \gappto\clicks@body{{#1\par}}%
 }\makeatother
 
+% Flush the page: print the entire content.
 \makeatletter\newcommand\flush[1][1]{%
-  \clicks@flush%
-  \renewcommand*\clicks@body{}%
+  \ifx\clicks@body\empty\else%
+    \clicks@flush%
+    \renewcommand*\clicks@body{}%
+  \fi%
   \ifclicks@static\else%
     \addtocounter{minutes}{#1}%
   \fi%
 }
 
+% Print the content and wait for more.
 \makeatletter\newcommand\click[1][0]{%
   \ifclicks@static\else%
     \addtocounter{minutes}{#1}%
