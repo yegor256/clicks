@@ -62,7 +62,7 @@ zip: $(NAME).pdf $(NAME).sty
 	cat $(NAME).sty | grep RequirePackage | sed -e "s/.*{\(.\+\)}.*/hard \1/" | uniq > DEPENDS.txt
 	cd ..
 	zip -r $(NAME).zip *
-	cp $(NAME).zip ..
+	cp $(NAME).zip ../$(NAME)-ctan.zip
 	unzip -l $(NAME).zip
 	cd ..
 
