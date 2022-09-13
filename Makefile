@@ -45,6 +45,7 @@ set-version:
 	sed -i "s|00\.00\.0000|$${date}|" $(NAME).sty
 	sed -i "s|0\.0\.0|$(VERSION)|" $(NAME).tex
 	sed -i "s|00\.00\.0000|$${date}|" $(NAME).tex
+	sed -i "s/0\.0\.0/$(VERSION)/g" build.lua
 
 zip: $(NAME).pdf $(NAME).sty
 	rm -rf package
