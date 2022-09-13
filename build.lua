@@ -17,5 +17,5 @@ uploadconfig = {
   summary = "Slide Deck Animation",
   repository = "https://github.com/yegor256/clicks",
   support = "https://github.com/yegor256/clicks",
-  topic = {"emulation","layout","presentation"}
+  topic = {"emulation", "layout", "presentation"}
 }

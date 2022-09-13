@@ -41,9 +41,9 @@ $(NAME).pdf: $(NAME).tex $(NAME).sty
 
 set-version:
 	date=$$(date +%Y/%m/%d)
-	sed -i "s|0\.0\.0|$(version)|" $(NAME).sty
+	sed -i "s|0\.0\.0|$(VERSION)|" $(NAME).sty
 	sed -i "s|00\.00\.0000|$${date}|" $(NAME).sty
-	sed -i "s|0\.0\.0|$(version)|" $(NAME).tex
+	sed -i "s|0\.0\.0|$(VERSION)|" $(NAME).tex
 	sed -i "s|00\.00\.0000|$${date}|" $(NAME).tex
 
 zip: $(NAME).pdf $(NAME).sty
