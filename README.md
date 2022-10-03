@@ -1,4 +1,4 @@
-[![make](https://github.com/yegor256/clicks/actions/workflows/latexmk.yml/badge.svg)](https://github.com/yegor256/clicks/actions/workflows/latexmk.yml)
+[![make](https://github.com/yegor256/clicks/actions/workflows/l3build.yml/badge.svg)](https://github.com/yegor256/clicks/actions/workflows/l3build.yml)
 [![CTAN](https://img.shields.io/ctan/v/clicks)](https://ctan.org/pkg/clicks)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/clicks/blob/master/LICENSE.txt)
 
