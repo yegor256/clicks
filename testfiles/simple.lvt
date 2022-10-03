@@ -1,0 +1,13 @@
+\input{regression-test.tex}
+\documentclass[twocolumn]{article}
+\usepackage{clicks}
+\begin{document}
+\START
+
+\plick{Here is your wedding plan:}
+\plick{1. Buy a ring}
+\plick{2. Propose}
+\plush{3. Get married}
+And then live happily ever after.
+
+\END

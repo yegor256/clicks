@@ -1,6 +1,10 @@
 module = "clicks"
+ctanupload = true
+typesetopts = "--interaction=batchmode --shell-escape"
+checkopts = "--interaction=batchmode --shell-escape"
+tagfiles = {"build.lua", "clicks.dtx"}
+
 uploadconfig = {
-  update = true,
   pkg = "clicks",
   version = "0.0.0",
   author = "Yegor Bugayenko",
@@ -10,12 +14,19 @@ uploadconfig = {
   announcement = "Some non-critical bug fixes",
   ctanPath = "/macros/latex/contrib/clicks",
   bugtracker = "https://github.com/yegor256/clicks/issues",
-  home = "https://github.com/yegor256/clicks",
+  home = "",
   description = "With the help of this package you can simulate animation in your slide deck, making it look similar to what PowerPoint can do.",
-  development = "https://github.com/yegor256/clicks",
+  development = "",
   license = "mit",
   summary = "Slide Deck Animation",
   repository = "https://github.com/yegor256/clicks",
-  support = "https://github.com/yegor256/clicks",
+  support = "",
   topic = {"emulation", "layout", "presentation"}
 }
+
+function update_tag(file, content, tagname, tagdate)
+  return string.gsub(
+    string.gsub(content, "0%.0%.0", tagname),
+    "0000%-00%-00", os.date("%Y-%m-%d")
+  )
+end
