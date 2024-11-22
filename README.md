@@ -1,10 +1,14 @@
+# Rolling Animation in Slides
+
 [![make](https://github.com/yegor256/clicks/actions/workflows/l3build.yml/badge.svg)](https://github.com/yegor256/clicks/actions/workflows/l3build.yml)
 [![CTAN](https://img.shields.io/ctan/v/clicks)](https://ctan.org/pkg/clicks)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/clicks/blob/master/LICENSE.txt)
 
-This LaTeX package simulates animiation in slide deck, similar to what PowerPoint can do.
+This LaTeX package simulates animiation in slide deck,
+similar to what PowerPoint can do.
 
-First, [install it](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages)
+First,
+[install it](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages)
 from [CTAN](https://ctan.org/pkg/clicks) 
 and then use in the preamble:
 
