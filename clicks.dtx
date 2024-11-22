@@ -166,6 +166,7 @@
 % \begin{macro}{\print}
 % Then, we define |\print| command:
 %    \begin{macrocode}
+\RequirePackage{etoolbox}
 \makeatletter
 \newcommand\print[1]{%
   \gappto\clicks@body{{#1\par}}%
