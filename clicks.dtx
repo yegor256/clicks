@@ -139,27 +139,23 @@
 
 % \changes{v0.1.0}{2021/09/13}{Initial version}
 
-% First, we include a few packages:
+% First, we parse package options:
 %    \begin{macrocode}
-\RequirePackage{xkeyval}
-\RequirePackage{etoolbox}
-%    \end{macrocode}
-
-% Then, we parse package options:
-%    \begin{macrocode}
-\makeatletter
-\newif\ifclicks@static
-\DeclareOption{static}{\clicks@statictrue}
-\makeatother
-\ProcessOptions\relax
+\RequirePackage{pgfopts}
+\pgfkeys{
+  /clicks/.cd,
+  statis/.store in=\clicks@static,
+}
 %    \end{macrocode}
 
 % Then, we define a few supplementary commands:
 %    \begin{macrocode}
-\makeatletter\newcommand*\clicks@body{}\makeatother
-\makeatletter\newcommand\clicks@flush{%
+\makeatletter
+\newcommand*\clicks@body{}
+\newcommand\clicks@flush{%
   \clicks@body\vspace*{0pt}\newpage%
-}\makeatother
+}
+\makeatother
 %    \end{macrocode}
 
 % Then, we declare a counter of minutes:
@@ -170,38 +166,44 @@
 % \begin{macro}{\print}
 % Then, we define |\print| command:
 %    \begin{macrocode}
-\makeatletter\newcommand\print[1]{%
+\makeatletter
+\newcommand\print[1]{%
   \gappto\clicks@body{{#1\par}}%
-}\makeatother
+}
+\makeatother
 %    \end{macrocode}
 % \end{macro}
 
 % \begin{macro}{\flush}
 % Then, we define |\flush| command:
 %    \begin{macrocode}
-\makeatletter\newcommand\flush[1][1]{%
+\makeatletter
+\newcommand\flush[1][1]{%
   \ifx\clicks@body\empty\else%
     \clicks@flush%
     \renewcommand*\clicks@body{}%
   \fi%
-  \ifclicks@static\else%
+  \ifdefined\clicks@static\else%
     \addtocounter{minutes}{#1}%
   \fi%
 }
+\makeatother
 %    \end{macrocode}
 % \end{macro}
 
 % \begin{macro}{\click}
 % Then, we define |\click| command:
 %    \begin{macrocode}
-\makeatletter\newcommand\click[1][0]{%
-  \ifclicks@static\else%
+\makeatletter
+\newcommand\click[1][0]{%
+  \ifdefined\clicks@static\else%
     \addtocounter{minutes}{#1}%
   \fi%
-  \ifclicks@static\else%
+  \ifdefined\clicks@static\else%
     \clicks@flush%
   \fi%
-}\makeatother
+}
+\makeatother
 %    \end{macrocode}
 % \end{macro}
 
