@@ -9,7 +9,7 @@ similar to what PowerPoint can do.
 
 First,
 [install it](https://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages)
-from [CTAN](https://ctan.org/pkg/clicks) 
+from [CTAN](https://ctan.org/pkg/clicks)
 and then use in the preamble:
 
 ```tex
@@ -24,7 +24,7 @@ And then live happily ever after.
 \end{document}
 ```
 
-If you want to contribute yourself, make a fork, then create a branch, 
+If you want to contribute yourself, make a fork, then create a branch,
 then run `make` in the root directory.
 It should compile everything without errors. If not, submit an issue and wait.
 Otherwise, make your changes and then run `make` again. If the build is
