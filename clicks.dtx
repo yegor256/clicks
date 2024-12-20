@@ -169,7 +169,10 @@
 \RequirePackage{etoolbox}
 \makeatletter
 \newcommand\print[1]{%
-  \gappto\clicks@body{{#1\par}}%
+  \def\param{#1}%
+  \ifx\param\empty\else%
+    \gappto\clicks@body{{#1\par}}%
+  \fi%
 }
 \makeatother
 %    \end{macrocode}
