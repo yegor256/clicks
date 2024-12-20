@@ -1,6 +1,6 @@
 \input{regression-test.tex}
 \documentclass[twocolumn]{article}
-\usepackage{clicks}
+\usepackage[static]{clicks}
 \begin{document}
 
 \START
