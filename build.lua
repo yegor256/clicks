@@ -24,6 +24,7 @@ module = "clicks"
 ctanupload = true
 typesetopts = "-interaction=batchmode -shell-escape -halt-on-error"
 checkopts = "-interaction=batchmode -shell-escape -halt-on-error"
+sourcefiles = {"*.dtx", "*.ins", "*-????-??-??.sty"}
 tagfiles = {"build.lua", "clicks.dtx"}
 checkengines = {"pdftex", "luatex", "xetex"}
 
