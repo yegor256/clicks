@@ -23,8 +23,6 @@
 docker:
   image: yegor256/rultor-latex
 install: |-
-  sudo gem install texsc:0.6.0
-  sudo gem install texqc:0.6.0
   sudo apt-get update
   sudo apt-get install -y aspell
   sudo tlmgr option repository ctan
