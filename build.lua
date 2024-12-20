@@ -25,6 +25,7 @@ ctanupload = true
 typesetopts = "-interaction=batchmode -shell-escape -halt-on-error"
 checkopts = "-interaction=batchmode -shell-escape -halt-on-error"
 tagfiles = {"build.lua", "clicks.dtx"}
+checkengines = {"pdftex", "luatex", "xetex"}
 
 uploadconfig = {
   pkg = "clicks",
