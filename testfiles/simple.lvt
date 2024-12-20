@@ -2,6 +2,7 @@
 \documentclass[twocolumn]{article}
 \usepackage{clicks}
 \begin{document}
+
 \START
 
 \plick{Here is your wedding plan:}
