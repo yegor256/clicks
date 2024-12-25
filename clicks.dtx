@@ -170,9 +170,10 @@
 \RequirePackage{etoolbox}
 \makeatletter
 \newcommand\print[1]{%
+  \gappto\clicks@body{{#1}}%
   \def\param{#1}%
   \ifx\param\empty\else%
-    \gappto\clicks@body{{#1\par}}%
+    \gappto\clicks@body{{\par}}%
   \fi%
 }
 \makeatother
