@@ -23,8 +23,8 @@
 docker:
   image: yegor256/rultor-latex
 install: |-
-  sudo apt-get update
-  sudo apt-get install -y aspell
+  sudo apt-get update --yes --fix-missing
+  sudo apt-get install --yes aspell
   sudo tlmgr option repository ctan
   sudo tlmgr --verify-repo=none update --self
   sudo tlmgr --verify-repo=none install $(cut -d' ' -f2 DEPENDS.txt | uniq)
