@@ -4,7 +4,7 @@
 [![CTAN](https://img.shields.io/ctan/v/clicks)](https://ctan.org/pkg/clicks)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/clicks/blob/master/LICENSE.txt)
 
-This LaTeX package simulates animiation in slide deck,
+This LaTeX package simulates animation in a slide deck,
 similar to what PowerPoint can do.
 
 First,
