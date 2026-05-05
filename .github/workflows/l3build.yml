@@ -29,6 +29,11 @@ jobs:
           package_file: .texlive-packages.txt
           texlive_version: 2025
       - run: l3build ctan --show-log-on-error --halt-on-error
+      - if: failure()
+        run: |
+          echo '::group::clicks.log'
+          cat build/doc/clicks.log 2>/dev/null || echo 'no build/doc/clicks.log'
+          echo '::endgroup::'
       - run: |
           mkdir build/gh-pages
           cp build/distrib/tds/tex/latex/clicks/clicks.sty build/gh-pages
