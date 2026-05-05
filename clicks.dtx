@@ -57,11 +57,11 @@
 %
 % \section{Introduction}
 %
-% This package helps simulate animation in PDF documents. You put
-% some content on the page, then you ``click'' and the page ends,
-% while the content gets copied to the next page. There, you add new
-% content. In the full-screen presentation mode this will look
-% like animation, similar to what you can get with MS PowerPoint:
+% This package facilitates the simulation of animation within PDF documents.
+% Content is placed on a page; a ``click'' then terminates the page while
+% propagating its content onto the next, where additional material may be
+% appended. In the full-screen presentation mode, the resulting effect
+% resembles animation comparable to that produced by MS PowerPoint:
 %\iffalse
 %<*verb>
 %\fi
@@ -79,7 +79,7 @@
 %</verb>
 %\fi
 
-% You can make it shorter, with the help of
+% A more compact form is available through the
 % |\plick| and |\plush| commands:
 %\iffalse
 %<*verb>
@@ -98,19 +98,18 @@
 %</verb>
 %\fi
 
-% The optional parameters at |\plick| and |\plush|
-% are the minutes: how long you are planning to stay at this animation.
-% The minutes are accumulated in the |minutes| counter, which
-% you can show, for example, at your header. This will help you track
-% time during the presentation. The commands
-% |\click| and |\flush| also have the
-% same optional arguments.
+% The optional parameters of |\plick| and |\plush|
+% denote minutes: namely, the duration intended to be spent on the
+% corresponding animation. These minutes accumulate in the |minutes|
+% counter, which may be displayed, for instance, in the page header,
+% thereby permitting time to be tracked throughout the presentation.
+% The commands |\click| and |\flush| accept the same optional arguments.
 
 % \section{Package Options}
 
 % \begin{macro}{static}
-% If you need to render the document without animation, just
-% use the |static| package option.
+% Should the document be rendered without animation,
+% the |static| package option suffices.
 % \end{macro}
 
 % \StopEventually{}
