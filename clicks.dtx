@@ -36,8 +36,12 @@
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage{lmodern}
+\usepackage{fail-fast}
 \usepackage{clicks}
+\PassOptionsToPackage{hyperindex=false}{hyperref}
 \usepackage{href-ul}
+\usepackage{bookmark}
+\renewcommand{\RerunFileCheck}[3]{\AddToHook{enddocument/info}{#2}}
 \PageIndex
 \EnableCrossrefs
 \CodelineIndex
