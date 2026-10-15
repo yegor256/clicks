@@ -108,7 +108,8 @@
 % corresponding animation. These minutes accumulate in the |minutes|
 % counter, which may be displayed, for instance, in the page header,
 % thereby permitting time to be tracked throughout the presentation.
-% The commands |\click| and |\flush| accept the same optional arguments.
+% The commands |\click| and |\flush| accept the same optional arguments,
+% and all four commands default to one minute.
 
 % \section{Package Options}
 
@@ -182,7 +183,7 @@
 % Then, we define |\click| command:
 %    \begin{macrocode}
 \makeatletter
-\newcommand\click[1][0]{%
+\newcommand\click[1][1]{%
   \ifdefined\clicks@static\else%
     \addtocounter{minutes}{#1}%
     \clicks@flush%

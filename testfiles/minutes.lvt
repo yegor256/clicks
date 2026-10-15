@@ -1,0 +1,18 @@
+% SPDX-FileCopyrightText: Copyright (c) 2021-2026 Yegor Bugayenko
+% SPDX-License-Identifier: MIT
+
+\input{regression-test.tex}
+\documentclass{article}
+\usepackage{clicks}
+\begin{document}
+
+\START
+
+\print{Here is your wedding plan:}\click
+\TYPE{minutes=\theminutes}
+\plick{1. Buy a ring}
+\TYPE{minutes=\theminutes}
+\plush{2. Propose}
+\TYPE{minutes=\theminutes}
+
+\END
