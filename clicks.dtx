@@ -155,10 +155,7 @@
 \makeatletter
 \newcommand\print[1]{%
   \gappto\clicks@body{{#1}}%
-  \def\param{#1}%
-  \ifx\param\empty\else%
-    \gappto\clicks@body{{\par}}%
-  \fi%
+  \ifstrempty{#1}{}{\gappto\clicks@body{{\par}}}%
 }
 \makeatother
 %    \end{macrocode}
