@@ -1,4 +1,5 @@
 hard etoolbox
+hard pgf
 hard pgfopts
 soft bookmark
 soft fail-fast
