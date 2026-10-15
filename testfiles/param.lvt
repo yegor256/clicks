@@ -1,0 +1,15 @@
+% SPDX-FileCopyrightText: Copyright (c) 2021-2026 Yegor Bugayenko
+% SPDX-License-Identifier: MIT
+
+\input{regression-test.tex}
+\documentclass{article}
+\usepackage{clicks}
+\newcommand\param{untouched}
+\begin{document}
+
+\START
+
+\plick{Here is your wedding plan:}
+\TYPE{param=\param}
+
+\END
