@@ -1,6 +1,6 @@
 # Rolling Animation in Slides
 
-[![make](https://github.com/yegor256/clicks/actions/workflows/l3build.yml/badge.svg)](https://github.com/yegor256/clicks/actions/workflows/l3build.yml)
+[![l3build](https://github.com/yegor256/clicks/actions/workflows/l3build.yml/badge.svg)](https://github.com/yegor256/clicks/actions/workflows/l3build.yml)
 [![CTAN](https://img.shields.io/ctan/v/clicks)](https://ctan.org/pkg/clicks)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/clicks/blob/master/LICENSE.txt)
 
@@ -25,7 +25,7 @@ And then live happily ever after.
 ```
 
 If you want to contribute yourself, make a fork, then create a branch,
-then run `make` in the root directory.
+then run `l3build ctan` in the root directory.
 It should compile everything without errors. If not, submit an issue and wait.
-Otherwise, make your changes and then run `make` again. If the build is
+Otherwise, make your changes and then run `l3build ctan` again. If the build is
 still clean, submit a pull request.
