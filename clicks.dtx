@@ -188,8 +188,6 @@
 \newcommand\click[1][0]{%
   \ifdefined\clicks@static\else%
     \addtocounter{minutes}{#1}%
-  \fi%
-  \ifdefined\clicks@static\else%
     \clicks@flush%
   \fi%
 }
